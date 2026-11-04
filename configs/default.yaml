@@ -1,0 +1,57 @@
+# 与 include/core/config.hpp 一一对应。
+# 改这里不需要重新编译；代码里的默认值只是兜底。
+
+dataset_dir: "data/samples/scene01"
+output_dir: "results"
+cache_dir: "cache"
+seed: 42
+num_threads: 8
+enable_dense: true
+
+feature:
+  max_features: 8000
+  contrast_threshold: 0.04
+  edge_threshold: 10.0
+  ratio_threshold: 0.75
+  resize_max_edge: 1600
+  use_cuda: true
+
+match:
+  knn: 2
+  ransac_threshold_px: 1.5
+  ransac_max_iterations: 1000
+  ransac_confidence: 0.999
+  min_inliers: 30
+  min_inlier_ratio: 0.30
+  view_graph_k: 10
+  homography_dominance_ratio: 0.8
+
+sfm:
+  min_observations_per_point: 2
+  max_reprojection_error_px: 2.0
+  min_triangulation_angle_deg: 1.0
+  local_ba_window: 5
+  max_ba_iterations: 50
+  fix_intrinsics: true
+  robust_loss: "HUBER"
+  robust_loss_scale: 1.0
+  max_rounds: 200
+
+mvs:
+  num_disparities: 128
+  block_size: 7
+  neighbor_views: 3
+  lr_consistency_threshold: 1.0
+  voxel_leaf_size: 0.01
+  sor_mean_k: 20
+  sor_std_ratio: 1.0
+  use_cuda: true
+
+viz:
+  window_title: "Multi-View 3D Reconstruction"
+  screen_width: 1280
+  screen_height: 800
+  point_size: 1.5
+  show_cameras: true
+  show_trajectory: true
+  show_matches: false
